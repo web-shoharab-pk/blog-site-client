@@ -1,0 +1,18 @@
+.writerInput{
+    display: block;
+    width: 50%;
+    height: 40px;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 2px solid gray ; 
+}
+ 
+.submitBtn{
+    border: none;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: bold;
+    width: 25%; 
+    padding: 10px;
+    border-radius: 999px;
+}

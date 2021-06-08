@@ -1,0 +1,27 @@
+.loginPage {
+  background-color: aqua;
+}
+.login {
+  height: 100vh;
+  text-align: center;
+  display: grid;
+  place-items: center;
+}
+
+.googleLoginBtn {
+  border: 2px solid white;
+  border-radius: 999px;
+  background-color: #494848;
+  padding: 5px 10px;
+  margin-top: 20px;
+}
+
+.googleLoginBtn img {
+  width: 40px;
+  height: 40px;
+}
+.googleLoginBtn span {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+}

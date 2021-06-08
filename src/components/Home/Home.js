@@ -1,11 +1,17 @@
 import React from 'react';
-import Navbar from './Navbar/Navbar';
+import { Container } from 'react-bootstrap';
+import Blogs from '../Blogs/Blogs';
+import Navbar from './Navbar/Navbar'; 
 
 const Home = () => {
     return (
         <main>
             <Navbar />
-            <h1>Home</h1>
+ 
+            <Container>
+            <Blogs />
+            </Container>
+            
         </main>
     );
 };

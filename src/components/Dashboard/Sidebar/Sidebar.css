@@ -1,0 +1,33 @@
+.sidebar {
+  height: 100vh;
+  background-color: white;
+  border-right: 2px solid gray;
+}
+
+.sidebar ul li {
+  cursor: pointer;
+  list-style-type: none;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 15px 0;
+  text-decoration: none;
+}
+.sidebarOption {
+  color: gray;
+  text-decoration: none;
+}
+
+.logout {
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  padding: 10px 20px;
+  background-color: #ea00ff;
+  position: absolute;
+  left: 15px; 
+  bottom: 30px; 
+}
+
+ 
