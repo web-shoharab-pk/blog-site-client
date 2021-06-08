@@ -9,6 +9,7 @@ const Home = () => {
             <Navbar />
  
             <Container>
+                <h1>OUR ALL BLOGS...</h1>
             <Blogs />
             </Container>
             

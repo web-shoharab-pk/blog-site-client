@@ -3,10 +3,8 @@ import { Redirect, Route } from 'react-router-dom';
 import { UserContext } from '../../../App';
 
 const PrivetRoute = ({ children, ...rest }) => {
-    const { user } = useContext(UserContext);
-    console.log(user);
-    let userToken = sessionStorage.getItem("userToken")
-    console.log(userToken);
+    const { user } = useContext(UserContext); 
+    
     return (
         <div>
             <Route

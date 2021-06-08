@@ -1,14 +1,13 @@
-import { faBlog, faFolderPlus, faShieldAlt, faSignOutAlt, faUserEdit, faUsers, faUserShield } from '@fortawesome/free-solid-svg-icons';
+import { faBlog, faFolderPlus, faShieldAlt, faSignOutAlt, faUserEdit, faUsers, faUserShield, faHome } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import firebase from "firebase/app";
 import "firebase/auth";
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { UserContext } from '../../../App';
 import './Sidebar.css';
 
-const Sidebar = () => {
-    const history = useHistory()
+const Sidebar = () => { 
     const { user, setUser } = useContext(UserContext)
     const [isAdmin, setIsAdmin] = useState(false)
     const [isWriter, setIsWriter] = useState(false)
@@ -21,7 +20,9 @@ const Sidebar = () => {
             // Sign-out successful
             console.log(res);
             setUser(null)
+            sessionStorage.removeItem("isAdmin")
             sessionStorage.removeItem('userToken')
+            sessionStorage.removeItem("isWriter")
         }).catch((error) => {
             // An error happened.
             console.log(error);
@@ -93,7 +94,7 @@ const Sidebar = () => {
                         </div>
                         : ''
                 }
-
+                <li style={{listStyleType: 'none', fontWeight: 'bold'}}><Link className="sidebarOption" to="/"><FontAwesomeIcon icon={faHome} /> HOME</Link></li>
                 <button onClick={handleSignOut} className="logout"><FontAwesomeIcon icon={faSignOutAlt} /> LOG OUT</button>
             </div>
         </section >

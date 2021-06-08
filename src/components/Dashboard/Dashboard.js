@@ -5,7 +5,6 @@ import Sidebar from './Sidebar/Sidebar';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card'; 
 import CardContent from '@material-ui/core/CardContent'; 
-import Typography from '@material-ui/core/Typography'; 
 
 const useStyles = makeStyles({
     root: {
@@ -26,8 +25,7 @@ const useStyles = makeStyles({
 
 const Dashboard = () => {
     const classes = useStyles();
-    const { user } = useContext(UserContext);
-    console.log(user.photoURL);
+    const { user } = useContext(UserContext); 
 
     return (
         <Row>

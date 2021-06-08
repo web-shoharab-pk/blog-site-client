@@ -43,6 +43,7 @@ const Login = () => {
                     body: JSON.stringify(userInfo)
                 }, [])
                 setUser(user);
+                storeAuthToken()
                  if(user){
                      history.replace(from)
                  }
@@ -56,9 +57,17 @@ const Login = () => {
                 console.log("Error Code" + errorCode, "Error Message" + errorMessage, "Credential" + credential);
                 // ...
             });
-
-        console.log("clicked");
     }
+
+    const storeAuthToken = () => {
+        firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+             console.log(idToken);
+             sessionStorage.setItem('JWTtoken', idToken)
+          }).catch(function(error) {
+            // Handle error
+          });
+    }
+
 
     return (
         <main className="loginPage">
