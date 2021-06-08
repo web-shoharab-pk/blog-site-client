@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { UserContext } from '../../../App';
-import { ImageBBAPI } from '../../Login/api';
+import { ImageBBAPI, SERVER_API } from '../../Login/api';
 import Sidebar from '../Sidebar/Sidebar';
 const axios = require('axios').default;
 
@@ -33,7 +33,7 @@ const AddBlog = () => {
         const allData = {
             ...data, imageURL,  blogerEmail: user.email, blogerName: user.displayName
         } 
-        fetch('http://localhost:5500/addBlog', {
+        fetch(`${SERVER_API}addBlog`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(allData)

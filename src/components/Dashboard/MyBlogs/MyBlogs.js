@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { UserContext } from '../../../App';
+import { SERVER_API } from '../../Login/api';
 import Sidebar from '../Sidebar/Sidebar';
 
 const MyBlogs = () => {
@@ -10,7 +11,7 @@ const MyBlogs = () => {
   
 
     useEffect(() => {
-        fetch('http://localhost:5500/myBlogs?email=' + user.email, {
+        fetch(`${SERVER_API}/myBlogs?email=` + user.email, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

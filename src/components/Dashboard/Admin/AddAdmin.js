@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import { SERVER_API } from '../../Login/api';
 import Sidebar from '../Sidebar/Sidebar';
 
 const AddAdmin = () => {
@@ -11,7 +12,7 @@ const AddAdmin = () => {
 
     const onSubmit = data => {
  
-        fetch('http://localhost:5500/addanAdmin', {
+        fetch(`${SERVER_API}/addanAdmin`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)

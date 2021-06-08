@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
+import { SERVER_API } from '../../Login/api';
 import Sidebar from '../Sidebar/Sidebar';
 
 const UsersBlogs = () => {
@@ -7,7 +8,7 @@ const UsersBlogs = () => {
     const [blogs, setBlogs] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5500/allBlogs')
+        fetch(`${SERVER_API}/allBlogs`)
             .then(res => res.json())
             .then(blog => {
                 setBlogs(blog)

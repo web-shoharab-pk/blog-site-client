@@ -3,14 +3,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import firebase from "firebase/app";
 import "firebase/auth";
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { UserContext } from '../../../App';
+import { SERVER_API } from '../../Login/api';
 import './Sidebar.css';
 
 const Sidebar = () => { 
     const { user, setUser } = useContext(UserContext)
     const [isAdmin, setIsAdmin] = useState(false)
-    const [isWriter, setIsWriter] = useState(false) 
+    const [isWriter, setIsWriter] = useState(false)
+    const history = useHistory() 
  
     const handleSignOut = () => { 
         firebase.auth().signOut().then((res) => {
@@ -19,6 +21,8 @@ const Sidebar = () => {
             sessionStorage.removeItem("isAdmin")
             sessionStorage.removeItem('userToken')
             sessionStorage.removeItem("isWriter")
+            sessionStorage.removeItem('JWTtoken')
+            history.push('/')
         }).catch((error) => {
             // An error happened. 
         });
@@ -26,7 +30,7 @@ const Sidebar = () => {
     } 
 
     useEffect(() => {
-        fetch('http://localhost:5500/isAdmin', {
+        fetch(`${SERVER_API}/isAdmin`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email: user.email })
@@ -42,7 +46,7 @@ const Sidebar = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5500/isWriter', {
+        fetch(`${SERVER_API}/isWriter`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email: user.email })

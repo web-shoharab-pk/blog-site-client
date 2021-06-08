@@ -8,6 +8,7 @@ import googleLogo from '../images/googleLogo.png'
 import './Login.css'
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { UserContext } from "../../App";
+import { SERVER_API } from "./api";
 // Initialize Firebase
 if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
@@ -37,7 +38,7 @@ const Login = () => {
                     image: user.photoURL,
                     email: user.email
                 }
-                fetch('http://localhost:5500/collectUsers', {
+                fetch(`${SERVER_API}collectUsers`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(userInfo)
