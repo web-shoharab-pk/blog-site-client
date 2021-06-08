@@ -23,8 +23,7 @@ const Sidebar = () => {
             // An error happened. 
         });
 
-    }
-    console.log(sessionStorage.getItem('isAdmin'));
+    } 
 
     useEffect(() => {
         fetch('http://localhost:5500/isAdmin', {

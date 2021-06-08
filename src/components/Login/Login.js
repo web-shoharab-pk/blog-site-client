@@ -50,18 +50,13 @@ const Login = () => {
                 // ...
             }).catch((error) => {
                 // Handle Errors here.
-                var errorCode = error.code;
-                var errorMessage = error.message; 
-                // The firebase.auth.AuthCredential type that was used.
-                var credential = error.credential;
-                console.log("Error Code" + errorCode, "Error Message" + errorMessage, "Credential" + credential);
+              console.log(error);
                 // ...
             });
     }
 
     const storeAuthToken = () => {
-        firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
-             console.log(idToken);
+        firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) { 
              sessionStorage.setItem('JWTtoken', idToken)
           }).catch(function(error) {
             // Handle error

@@ -7,7 +7,7 @@ const MyBlogs = () => {
     const { user } = useContext(UserContext)
     const [myBlogs, setMyBlogs] = useState([])
     const [spinner, setSpinner] = useState(false)
-    console.log(myBlogs);
+  
 
     useEffect(() => {
         fetch('http://localhost:5500/myBlogs?email=' + user.email, {
@@ -24,6 +24,11 @@ const MyBlogs = () => {
             })
 
     }, [user.email])
+
+    const blogDeleteBtn = () => {
+        alert('Delete Button Not Implement')
+    }
+
 
     return (
         <Row>
@@ -42,13 +47,13 @@ const MyBlogs = () => {
                             </tr>
                         </thead>
                         {
-                            myBlogs.map(blog =>
+                            myBlogs?.map(blog =>
                                 <tbody key={blog._id}>
                                     <tr>
                                         <th scope="row">{blog._id}</th>
                                         <td>{blog.blogTitle}</td>
                                         <td>{blog.blogerName}</td>
-                                        <td><button className="btn btn-danger">DELETE</button></td>
+                                        <td><button onClick={blogDeleteBtn} className="btn btn-danger">DELETE</button></td>
                                     </tr>
                                 </tbody>
                             )

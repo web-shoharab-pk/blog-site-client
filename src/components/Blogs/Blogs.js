@@ -4,8 +4,8 @@ import Blog from '../Blog/Blog';
 
 const Blogs = () => {
     const [spinner, setSpinner] = useState(false)
-    const [blogs, setBlogs] = useState([])
-    console.log(blogs);
+    const [blogs, setBlogs] = useState([]) 
+ 
     useEffect(() => {
         fetch('http://localhost:5500/allBlogs')
             .then(res => res.json())

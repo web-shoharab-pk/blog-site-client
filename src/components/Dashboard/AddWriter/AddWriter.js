@@ -6,12 +6,11 @@ import './AddWriter.css'
 
 const AddWriter = () => {
     const [confirm, setConfirm] = useState(false) 
-    console.log(confirm.ok);
+ 
     const { register, formState: { errors }, handleSubmit } = useForm();
 
     const onSubmit = data => {
-
-        console.log(data)
+ 
         fetch('http://localhost:5500/addBlogsWriter', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

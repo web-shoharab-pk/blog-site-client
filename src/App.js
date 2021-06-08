@@ -18,7 +18,7 @@ import MyBlogs from "./components/Dashboard/MyBlogs/MyBlogs";
 export const UserContext = createContext()
 
 const App = () => {
-  const [user, setUser] = useState()
+  const [user, setUser] = useState() 
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <Router>

@@ -25,16 +25,14 @@ const AddBlog = () => {
             .then(function (response) {
                 setImageURL(response.data.data.display_url); 
             })
-            .catch(function (error) {
-                console.log(error);
+            .catch(function (error) { 
             });
     }
 
     const onSubmit = data => {
         const allData = {
             ...data, imageURL,  blogerEmail: user.email, blogerName: user.displayName
-        }
-        console.log(allData)
+        } 
         fetch('http://localhost:5500/addBlog', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

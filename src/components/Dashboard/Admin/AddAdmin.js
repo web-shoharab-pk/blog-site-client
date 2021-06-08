@@ -6,12 +6,11 @@ import Sidebar from '../Sidebar/Sidebar';
 const AddAdmin = () => {
 
     const [confirm, setConfirm] = useState(false)
-    console.log(confirm);
+ 
     const { register, formState: { errors }, handleSubmit } = useForm();
 
     const onSubmit = data => {
-
-        console.log(data)
+ 
         fetch('http://localhost:5500/addanAdmin', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
