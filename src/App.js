@@ -13,6 +13,7 @@ import UsersBlogs from "./components/Dashboard/UsersBlogs/UsersBlogs";
 import AddWriter from "./components/Dashboard/AddWriter/AddWriter";
 import AddAdmin from "./components/Dashboard/Admin/AddAdmin";
 import AddBlog from "./components/Dashboard/AddBlog/AddBlog";
+import MyBlogs from "./components/Dashboard/MyBlogs/MyBlogs";
 
 export const UserContext = createContext()
 
@@ -22,17 +23,20 @@ const App = () => {
     <UserContext.Provider value={{ user, setUser }}>
       <Router>
         <Switch>
-          <PrivetRoute path="/usersBlogs">
+          <PrivetRoute path="/dashboard/usersBlogs">
             <UsersBlogs />
           </PrivetRoute>
-          <PrivetRoute path="/addWriter">
+          <PrivetRoute path="/dashboard/addWriter">
             <AddWriter />
           </PrivetRoute>
-          <PrivetRoute path="/addAdmin">
+          <PrivetRoute path="/dashboard/addAdmin">
             <AddAdmin />
           </PrivetRoute>
-          <PrivetRoute path="/addBlog">
+          <PrivetRoute path="/dashboard/addBlog">
              <AddBlog />
+          </PrivetRoute>
+          <PrivetRoute path="/dashboard/myBlogs">
+             <MyBlogs />
           </PrivetRoute>
           <PrivetRoute path="/dashboard">
             <Dashboard />

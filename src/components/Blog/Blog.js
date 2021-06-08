@@ -16,8 +16,7 @@ const useStyles = makeStyles({
 });
 
 const Blog = ({ blog }) => {
-  
-    console.log(blog);
+   
     const classes = useStyles();
     const { blogerName, blogTitle, blogDetails, imageURL } = blog;
  

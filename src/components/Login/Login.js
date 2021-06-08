@@ -82,7 +82,7 @@ const Login = () => {
 
                     <button onClick={() => handleGoogleLogin()} className="googleLoginBtn">
                         <img className="mx-3" src={googleLogo} alt="" />
-                        <span className="mx-3">Sign In with Google</span>
+                        <span className="mx-5"> Sign In with Google</span>
                     </button>
                 </div>
 
