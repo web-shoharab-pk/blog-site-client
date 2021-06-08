@@ -39,7 +39,7 @@ const AddBlog = () => {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(allData)
-        }, [])
+        })
             .then((result) => {
                 setConfirm(result);
             })

@@ -6,7 +6,7 @@ import { firebaseConfig } from './firebase.config';
 import logo from '../images/apploreLogo.webp';
 import googleLogo from '../images/googleLogo.png'
 import './Login.css'
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { UserContext } from "../../App";
 // Initialize Firebase
 if (!firebase.apps.length) {
@@ -15,7 +15,10 @@ if (!firebase.apps.length) {
 
 const Login = () => {
     const { setUser} = useContext(UserContext)
-    const history = useHistory()
+    const history = useHistory() 
+    let location = useLocation(); 
+  
+    let { from } = location.state || { from: { pathname: "/" } };
 
     const handleGoogleLogin = () => {
 
@@ -40,7 +43,9 @@ const Login = () => {
                     body: JSON.stringify(userInfo)
                 }, [])
                 setUser(user);
-                history.push('/')
+                 if(user){
+                     history.replace(from)
+                 }
                 // ...
             }).catch((error) => {
                 // Handle Errors here.
@@ -66,7 +71,7 @@ const Login = () => {
                         </Link>
                     </div>
 
-                    <button onClick={handleGoogleLogin} className="googleLoginBtn">
+                    <button onClick={() => handleGoogleLogin()} className="googleLoginBtn">
                         <img className="mx-3" src={googleLogo} alt="" />
                         <span className="mx-3">Sign In with Google</span>
                     </button>

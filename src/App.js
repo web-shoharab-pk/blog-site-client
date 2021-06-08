@@ -22,18 +22,18 @@ const App = () => {
     <UserContext.Provider value={{ user, setUser }}>
       <Router>
         <Switch>
-          <Route path="/usersBlogs">
+          <PrivetRoute path="/usersBlogs">
             <UsersBlogs />
-          </Route>
-          <Route path="/addWriter">
+          </PrivetRoute>
+          <PrivetRoute path="/addWriter">
             <AddWriter />
-          </Route>
-          <Route path="/addAdmin">
+          </PrivetRoute>
+          <PrivetRoute path="/addAdmin">
             <AddAdmin />
-          </Route>
-          <Route path="/addBlog">
+          </PrivetRoute>
+          <PrivetRoute path="/addBlog">
              <AddBlog />
-          </Route>
+          </PrivetRoute>
           <PrivetRoute path="/dashboard">
             <Dashboard />
           </PrivetRoute>

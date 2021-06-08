@@ -37,7 +37,7 @@ const Dashboard = () => {
             <Col className="p-5 text-center" xs lg="10">
                 <Card className={classes.root} variant="outlined">
                     <CardContent>
-                        <img src={user && user.photoURL} alt="" />
+                        <img src={user && user?.photoURL} alt="" />
                          <h4>{user && user.displayName}</h4>
                          <h4>{user && user.email}</h4>
                         
