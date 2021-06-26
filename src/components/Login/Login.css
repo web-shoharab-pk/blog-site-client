@@ -1,12 +1,10 @@
 .loginPage {
-  background-color: aqua;
+  background-color: rgb(185, 211, 211);
 }
 .login {
   height: 100vh;
-  text-align: center;
   display: grid;
   place-items: center;
-
 }
 
 .googleLoginBtn {
@@ -19,6 +17,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  display: none;
 }
 
 .googleLoginBtn img {
@@ -29,4 +28,46 @@
   font-size: 18px;
   font-weight: bold;
   color: white;
+}
+
+.input_title {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 38px;
+  margin: 0;
+  margin-top: 15px;
+  color: rgba(0, 0, 0, 0.38);
+}
+
+.login_input {
+  width: 350px;
+  height: 50px;
+  background: #eff0f7;
+  border-radius: 16px;
+  border: 0;
+  font-size: 16px;
+  line-height: 28px;
+  letter-spacing: 0.75px;
+  padding: 10px 20px;
+  color: #a0a3bd;
+}
+.login_input:focus {
+  outline: none;
+}
+
+.login_btn {
+  width: 100%;
+  background: #ffd8b9;
+  border-radius: 16px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  color: #823900;
+  text-align: center;
+  letter-spacing: 0.05em;
+  text-transform: capitalize;
+  padding: 10px;
+  border: none;
+  margin-top: 20px;
 }

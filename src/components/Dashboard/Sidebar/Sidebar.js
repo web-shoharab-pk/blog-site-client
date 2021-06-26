@@ -8,13 +8,29 @@ import { UserContext } from '../../../App';
 import { SERVER_API } from '../../Login/api';
 import './Sidebar.css';
 
-const Sidebar = () => { 
+const Sidebar = () => {
     const { user, setUser } = useContext(UserContext)
     const [isAdmin, setIsAdmin] = useState(false)
     const [isWriter, setIsWriter] = useState(false)
-    const history = useHistory() 
- 
-    const handleSignOut = () => { 
+    const history = useHistory()
+
+
+
+    useEffect(() => {
+        fetch(`${SERVER_API}/isAdmin`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: user.email })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setIsAdmin(data)
+                sessionStorage.setItem("isAdmin", data)
+            })
+    }, [user.email])
+
+    const handleSignOut = () => {
         firebase.auth().signOut().then((res) => {
             // Sign-out successful 
             setUser(null)
@@ -27,23 +43,7 @@ const Sidebar = () => {
             // An error happened. 
         });
 
-    } 
-
-    useEffect(() => {
-        fetch(`${SERVER_API}/isAdmin`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: user.email })
-        })
-            .then(res => res.json())
-            .then(data => { 
-                setIsAdmin(data)
-                if (data) {
-                    sessionStorage.setItem("isAdmin", data)
-                }
-            })
-    }, [user.email])
-
+    }
 
     useEffect(() => {
         fetch(`${SERVER_API}/isWriter`, {
@@ -52,7 +52,7 @@ const Sidebar = () => {
             body: JSON.stringify({ email: user.email })
         })
             .then(res => res.json())
-            .then(data => { 
+            .then(data => {
                 setIsWriter(data)
                 if (data) {
                     sessionStorage.setItem("isWriter", data)
@@ -76,7 +76,13 @@ const Sidebar = () => {
                         </div>
                         : ""
                 }
-
+                <div className="admin_sidebar">
+                    <ul>
+                    <li style={{ listStyleType: 'none', fontWeight: 'bold' }}><Link className="sidebarOption" to="/"><FontAwesomeIcon icon={faHome} /> HOME</Link></li>
+                        <li><Link className="sidebarOption" to="/dashboard/usersBlogs"><FontAwesomeIcon icon={faUsers} />BLOGS</Link></li> 
+                        <li><Link className="sidebarOption" to="/dashboard/addBlog"><FontAwesomeIcon icon={faFolderPlus} /> ADD BLOG</Link></li>                           
+                    </ul>
+                </div>
 
                 {/* Content writer Dashboard */}
                 {
@@ -90,8 +96,8 @@ const Sidebar = () => {
                         </div>
                         : ''
                 }
-                <li style={{listStyleType: 'none', fontWeight: 'bold'}}><Link className="sidebarOption" to="/"><FontAwesomeIcon icon={faHome} /> HOME</Link></li>
-                <button onClick={handleSignOut} className="logout"><FontAwesomeIcon icon={faSignOutAlt} /> LOG OUT</button>
+                {/* <li style={{ listStyleType: 'none', fontWeight: 'bold' }}><Link className="sidebarOption" to="/"><FontAwesomeIcon icon={faHome} /> HOME</Link></li> */}
+                <button style={{position: 'absolute', left: '20px', bottom: '30px', width: '250px'}} onClick={handleSignOut} className="login_btn"><FontAwesomeIcon icon={faSignOutAlt} /> LOG OUT</button>
             </div>
         </section >
     );

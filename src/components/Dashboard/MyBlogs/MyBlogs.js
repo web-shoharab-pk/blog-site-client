@@ -37,6 +37,7 @@ const MyBlogs = () => {
                 <Sidebar />
             </Col>
             <Col className="p-5 text-center" xs lg="10">
+                <h2>My All Blogs</h2>
                 {
                     spinner ? <table className="table">
                         <thead>

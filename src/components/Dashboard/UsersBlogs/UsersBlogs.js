@@ -6,7 +6,7 @@ import Sidebar from '../Sidebar/Sidebar';
 const UsersBlogs = () => {
     const [spinner, setSpinner] = useState(false)
     const [blogs, setBlogs] = useState([])
-
+console.log(blogs);
     useEffect(() => {
         fetch(`${SERVER_API}/allBlogs`)
             .then(res => res.json())
@@ -16,8 +16,13 @@ const UsersBlogs = () => {
             })
     }, [])
 
-    const blogDeleteBtn = () => {
-        alert('Delete Button Not Implement')
+    const blogDeleteBtn = (id) => {
+        
+        console.log(id);
+        fetch(`https://limitless-thicket-85312.herokuapp.com/blogsDeletByID/${id}`, {
+            method: 'DELETE'
+        })
+      alert('Blog deleted Please reload you page!')       
     }
 
 
@@ -28,13 +33,14 @@ const UsersBlogs = () => {
             </Col>
 
             {
-                (sessionStorage.getItem('isAdmin') === 'true') && <Col>
+                // (sessionStorage.getItem('isAdmin') === 'true') && <Col>
+              <Col>
 
-                    <Col xs lg="4">
+                    {/* <Col xs lg="4">
                         <h1>All users</h1>
                         <h2>Comming soon...</h2>
-                    </Col>
-                    <Col xs lg="6">
+                    </Col> */}
+                    <Col xs>
                         <h2>All blogs</h2>
                         {
                             spinner ? <table className="table">
@@ -47,13 +53,13 @@ const UsersBlogs = () => {
                                     </tr>
                                 </thead>
                                 {
-                                    blogs.map(blog =>
+                                    blogs?.map(blog =>
                                         <tbody key={blog._id}>
                                             <tr>
                                                 <th scope="row">{blog.blogTitle}</th>
                                                 <td>{blog.blogerEmail}</td>
                                                 <td>{blog.blogerName}</td>
-                                                <td><button onClick={blogDeleteBtn} className="btn btn-danger">DELETE</button></td>
+                                                <td><button onClick={(e) => blogDeleteBtn(blog._id)} className="btn btn-danger">DELETE</button></td>
                                             </tr>
                                         </tbody>
                                     )
